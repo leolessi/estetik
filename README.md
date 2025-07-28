@@ -1,6 +1,6 @@
 # Sistema de Agendamentos Clínicos
 
-Este projeto foi desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) e tem como objetivo criar um sistema de gerenciamento de consultas e usuários voltado para clínicas médicas/estéticas. Essa é uma versão genérica do projeto real.
+Este projeto foi desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC) e tem como objetivo criar um sistema de gerenciamento de consultas e usuários voltado para clínicas médicas/estéticas. Essa é uma versão "genérica" do projeto real.
 A aplicação utiliza tecnologias modernas para oferecer uma interface intuitiva e funcionalidades robustas.
 
 ### Melhorias em andamento
