@@ -1,0 +1,22 @@
+# Dockerfile para MongoDB - Sistema de Agendamentos
+FROM mongo:7.0
+
+# Define variáveis de ambiente para o MongoDB
+ENV MONGO_INITDB_ROOT_USERNAME=admin
+ENV MONGO_INITDB_ROOT_PASSWORD=clinic123
+ENV MONGO_INITDB_DATABASE=agendamento
+
+# Cria diretório para scripts de inicialização
+RUN mkdir -p /docker-entrypoint-initdb.d
+
+# Copia script de inicialização do banco de dados
+COPY ./scripts/init-db.js /docker-entrypoint-initdb.d/
+
+# Expõe a porta padrão do MongoDB
+EXPOSE 27017
+
+# Define volume para persistência dos dados
+VOLUME ["/data/db"]
+
+# Comando para iniciar o MongoDB
+CMD ["mongod", "--bind_ip_all"]

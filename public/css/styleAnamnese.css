@@ -1,0 +1,33 @@
+.cabecalhoCadastroAnamnese {
+  display: inline-block;
+}
+
+.containerImagem {
+  text-align: center;
+}
+
+@media print {
+  /* oculta os buttons/submits na pag de impressão */
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    display: none !important;
+  }
+
+  /* oculta o titulo e o cabecalho */
+  title,
+  header {
+    display: none !important;
+  }
+
+  /* oculta a url na impressão */
+  @page {
+    margin: 10px;
+  }
+
+  /* austa margens e layout */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

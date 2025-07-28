@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Avaliação Capilar</title>
+    <link rel="stylesheet" href="/css/styleAnamnese.css" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-3">
+      <h2>Edição de Formulário</h2>
+      <form action="/updateUser" method="POST">
+        <input type="hidden" name="id" value="<%= user._id %>" />
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nomeCompleto">Nome completo:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeCompleto"
+              name="nomeCompleto"
+              value="<%= user.nomeCompleto %>"
+              required
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="dataNascimento">Data de nascimento:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dataNascimento"
+              name="dataNascimento"
+              value="<%= new Date(user.dataNascimento).toISOString().split('T')[0] %>"
+              required
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="celular">Celular:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="celular"
+              name="celular"
+              value="<%= user.celular %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="email">E-mail:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              value="<%= user.email %>"
+              required
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="profissao">Profissão:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="profissao"
+              name="profissao"
+              value="<%= user.profissao %>"
+              required
+            />
+          </div>
+          <div class="form-group col-md-5">
+            <label for="endereco">Endereço:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="endereco"
+              name="endereco"
+              value="<%= user.endereco %>"
+              required
+            />
+          </div>
+        </div>
+
+        <h4>Saúde:</h4>
+
+        <div class="form-group">
+          <label>Tem alergia a algum cosmético?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alergiaCosmetico"
+            id="alergiaCosmeticoSim" value="sim" <%= user.alergiaCosmetico ===
+            'sim' ? 'checked' : '' %> />
+            <label class="form-check-label" for="alergiaCosmeticoSim"
+              >Sim</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alergiaCosmetico"
+            id="alergiaCosmeticoNao" value="não" <%= user.alergiaCosmetico ===
+            'não' ? 'checked' : '' %> />
+            <label class="form-check-label" for="alergiaCosmeticoNao"
+              >Não</label
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="alergiaCosmeticoTexto"
+            name="alergiaCosmeticoTexto"
+            placeholder="Descreva as alergias..."
+            value="<%= user.alergiaCosmeticoTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Tem alergia a algum medicamento?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="alergiaMedicamento" id="alergiaMedicamentoSim" value="sim" <%=
+            user.alergiaMedicamento === 'sim' ? 'checked' : '' %> />
+            <label class="form-check-label" for="alergiaMedicamentoSim"
+              >Sim</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="alergiaMedicamento" id="alergiaMedicamentoNao" value="não" <%=
+            user.alergiaMedicamento === 'não' ? 'checked' : '' %> />
+            <label class="form-check-label" for="alergiaMedicamentoNao"
+              >Não</label
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="alergiaMedicamentoTexto"
+            name="alergiaMedicamentoTexto"
+            placeholder="Descreva as alergias..."
+            value="<%= user.alergiaMedicamentoTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Faz uso de algum medicamento? Qual frequência?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="usoMedicamento"
+            id="usoMedicamentoSim" value="sim" <%= user.usoMedicamento === 'sim'
+            ? 'checked' : '' %> />
+            <label class="form-check-label" for="usoMedicamentoSim">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="usoMedicamento"
+            id="usoMedicamentoNao" value="não" <%= user.usoMedicamento === 'não'
+            ? 'checked' : '' %> />
+            <label class="form-check-label" for="usoMedicamentoNao">Não</label>
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="usoMedicamentoTexto"
+            name="usoMedicamentoTexto"
+            placeholder="Descreva os medicamentos e a frequência..."
+            value="<%= user.usoMedicamentoTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Tem algum problema cardíaco?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="problemasCardiacos" id="problemaCardiacoSim" value="sim" <%=
+            user.problemasCardiacos === 'sim' ? 'checked' : '' %> />
+            <label class="form-check-label" for="problemaCardiacoSim"
+              >Sim</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="problemasCardiacos" id="problemaCardiacoSim" value="não" <%=
+            user.problemasCardiacos === 'não' ? 'checked' : '' %> />
+            <label class="form-check-label" for="problemaCardiacoNao"
+              >Não</label
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="problemasCardiacosTexto"
+            name="problemasCardiacosTexto"
+            placeholder="Descreva os problemas..."
+            value="<%= user.problemasCardiacosTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Passou por alguma cirurgia recente?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="cirurgiaRecente"
+            id="cirurgiaRecenteSim" value="sim" <%= user.cirurgiaRecente ===
+            'sim' ? 'checked' : '' %> />
+            <label class="form-check-label" for="cirurgiaRecenteSim">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="cirurgiaRecente"
+            id="cirurgiaRecenteNao" value="não" <%= user.cirurgiaRecente ===
+            'não' ? 'checked' : '' %> />
+            <label class="form-check-label" for="cirurgiaRecenteNao">Não</label>
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="cirurgiaRecenteTexto"
+            name="cirurgiaRecenteTexto"
+            placeholder="Qual?"
+            value="<%= user.cirurgiaRecenteTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Alguma condição auto imune?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="condicaoAutoImune" id="condicaoAutoImuneSim" value="sim" <%=
+            user.condicaoAutoImune === 'sim' ? 'checked' : '' %> />
+            <label class="form-check-label" for="condicaoAutoImuneSim"
+              >Sim</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+            name="condicaoAutoImune" id="condicaoAutoImuneNao" value="não" <%=
+            user.condicaoAutoImune === 'não' ? 'checked' : '' %> />
+            <label class="form-check-label" for="condicaoAutoImuneNao"
+              >Não</label
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control conditional-input"
+            id="condicaoAutoImuneTexto"
+            name="condicaoAutoImuneTexto"
+            placeholder="Descreva a condição..."
+            value="<%= user.condicaoAutoImuneTexto %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Costuma se estressar muito durante o dia?</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estresse"
+            id="estresseSim" value="sim" <%= user.estresse === 'sim' ? 'checked'
+            : '' %> />
+            <label class="form-check-label" for="estresseSim">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estresse"
+            id="estresseNao" value="não" <%= user.estresse === 'não' ? 'checked'
+            : '' %> />
+            <label class="form-check-label" for="estresseNao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Tem feito alguma dieta com restrições alimentares?</label
+          ><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="dietaRestrita"
+            id="dietaRestritaSim" value="sim" <%= user.dietaRestrita === 'sim' ?
+            'checked' : '' %> />
+            <label class="form-check-label" for="dietaRestritaSim">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="dietaRestrita"
+            id="dietaRestritaNao" value="não" <%= user.dietaRestrita === 'não' ?
+            'checked' : '' %> />
+            <label class="form-check-label" for="dietaRestritaNao">Não</label>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-success mb-2">Salvar</button>
+          <a href="/listaUsuarios" class="btn btn-primary mb-2 ml-2">Voltar</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
+    <!-- <script src="/js/script.js"></script> -->
+    <!-- <script src="/js/retornarpdf.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,214 @@
+/* estilos gerais do body */
+body {
+  background-color: #f7f7f7 !important;
+}
+
+.container {
+  padding: 0 !important;
+}
+
+.feature-icon {
+  width: 4rem !important;
+  height: 4rem !important;
+  border-radius: 10% !important;
+}
+
+/* estilos dos links do header */
+.links-inicio {
+  color: #766695 !important;
+  font-size: 1.5rem !important;
+  pointer-events: initial !important;
+}
+
+.link-cadastro {
+  color: white !important;
+  pointer-events: initial !important;
+  text-decoration: none !important;
+}
+
+.link-login {
+  color: #766695 !important;
+  pointer-events: initial !important;
+  text-decoration: none !important;
+}
+
+/* estilos dos botões */
+.btn-login {
+  color: #766695 !important;
+  border-color: #766695 !important;
+}
+
+.btn-cadastro {
+  background-color: #766695 !important;
+  color: white !important;
+  border-color: #766695 !important;
+}
+
+.btn-primary {
+  background-color: #766695;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #5e536f;
+}
+
+/* estilos tratamentos */
+.head-tratamentos {
+  color: #766695 !important;
+  font-size: 4rem !important;
+  margin-top: 5px;
+}
+
+/* estilos do footer */
+
+/* ---------------------------------------------------- # Services -----------------------------------------------------*/
+.services .icon-box {
+  text-align: center !important;
+  border: 1px solid #ebebeb !important;
+  padding: 80px 20px !important;
+  transition: all ease-in-out 0.3s !important;
+  background: var(--white) !important;
+}
+
+.services .icon-box .icon {
+  margin: 0 auto !important;
+  width: 64px !important;
+  height: 64px !important;
+  background: var(--main-color) !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 20px !important;
+  transition: 0.3s !important;
+}
+
+.services .icon-box .icon i {
+  color: var(--dark-text) !important;
+  font-size: 28px !important;
+  transition: ease-in-out 0.3s !important;
+}
+
+.services .icon-box h4 {
+  font-weight: 700 !important;
+  margin-bottom: 15px !important;
+  font-size: 24px !important;
+  color: #695d86 !important;
+}
+
+.services .icon-box h4 a {
+  color: var(--dark-text) !important;
+  transition: ease-in-out 0.3s !important;
+}
+
+.services .icon-box h4 a:hover {
+  color: var(--main-color) !important;
+}
+
+.services .icon-box p {
+  line-height: 24px !important;
+  font-size: 14px !important;
+  margin-bottom: 0 !important;
+  color: #695d86 !important;
+}
+
+.services .icon-box:hover {
+  border-color: var(--white) !important;
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.section-title {
+  padding-bottom: 40px !important;
+}
+
+.section-title h2 {
+  font-size: 3rem !important;
+  font-weight: 500 !important;
+  padding-bottom: 10px !important;
+  line-height: 1px !important;
+  margin: 0 0 5px 0 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #aaa !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.section-title p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-family: "Poppins", sans-serif !important;
+  color: var(--dark-text) !important;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem !important;
+  --bs-gutter-y: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-top: calc(-1 * var(--bs-gutter-y)) !important;
+  margin-right: calc(-0.5 * var(--bs-gutter-x)) !important;
+  margin-left: calc(-0.5 * var(--bs-gutter-x)) !important;
+}
+
+.headSobreNos {
+  color: #695d86 !important;
+}
+
+section {
+  padding: 60px 0 !important;
+  overflow: hidden !important;
+}
+
+/* página login */
+
+.form-container {
+  max-width: 350px !important;
+  padding: 1rem !important;
+}
+
+.logo-login {
+  justify-content: center !important;
+  align-items: center !important;
+  align-self: center !important;
+}
+
+html,
+body {
+  height: 100% !important;
+}
+
+/* página cadastro */
+.conditional-input {
+  display: none !important;
+}
+
+/* contatos */
+.contatos-title h2 {
+  font-size: 3rem !important;
+  font-weight: 500 !important;
+  padding-bottom: 10px !important;
+  line-height: 1px !important;
+  margin: 0 0 5px 0 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #aaa !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* duvidas */
+.duvidas-title h2 {
+  font-size: 3rem !important;
+  font-weight: 500 !important;
+  padding-bottom: 10px !important;
+  line-height: 1px !important;
+  margin-top: 10px !important;
+  margin-bottom: 5px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #aaa !important;
+  font-family: "Poppins", sans-serif !important;
+}

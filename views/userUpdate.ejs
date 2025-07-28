@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar Dados do Usuário</title>
+    <link rel="stylesheet" href="/css/styleAnamnese.css" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h2>Atualizar dados</h2>
+      <form action="/userUpdate" method="POST">
+        <input type="hidden" name="id" value="<%= user._id %>" />
+        <div class="form-group">
+          <label for="nomeCompleto">Nome completo:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nomeCompleto"
+            name="nomeCompleto"
+            value="<%= user.nomeCompleto %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="dataNascimento">Data de nascimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dataNascimento"
+            name="dataNascimento"
+            value="<%= new Date(user.dataNascimento).toISOString().split('T')[0] %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="celular">Celular:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="celular"
+            name="celular"
+            value="<%= user.celular %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            value="<%= user.email %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="profissao">Profissão:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="profissao"
+            name="profissao"
+            value="<%= user.profissao %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="endereco">Endereço:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="endereco"
+            name="endereco"
+            value="<%= user.endereco %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="senhaAntiga">Senha atual:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="senhaAntiga"
+            name="senhaAntiga"
+            placeholder="Digite sua senha atual"
+          />
+        </div>
+        <div class="form-group">
+          <label for="novaSenha">Nova senha:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="novaSenha"
+            name="novaSenha"
+            placeholder="Nova senha (mín. 1 maiúscula e 1 número)"
+            pattern="^(?=.*[A-Z])(?=.*\d).+$"
+            title="A senha deve conter pelo menos uma letra maiúscula e um número"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="/usuario" class="btn btn-primary ml-2">Voltar</a>
+      </form>
+    </div>
+  </body>
+</html>

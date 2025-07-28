@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clínica Estetik</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <!-- header/nav -->
+  <body>
+    <div class="container">
+      <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between pt-3 mb-4"
+      >
+        <div class="col-md-2 mb-2 mb-md-0">
+          <a
+            href="/home"
+            class="d-inline-flex link-body-emphasis text-decoration-none"
+          >
+            <img
+              src="/images/logo-removebg.png"
+              alt=""
+              style="height: 150px; padding: 0"
+            />
+          </a>
+        </div>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/home" class="nav-link px-2 links-inicio">Início</a></li>
+          <li>
+            <a href="#" class="nav-link px-2 links-inicio">|</a>
+          </li>
+          <li>
+            <a href="#tratamentos" class="nav-link px-2 links-inicio"
+              >Tratamentos</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 links-inicio">|</a>
+          </li>
+          <li>
+            <a href="#sobreNos" class="nav-link px-2 links-inicio">Sobre nós</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 links-inicio">|</a>
+          </li>
+          <li>
+            <a href="#contatos" class="nav-link px-2 links-inicio">Contatos</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link px-2 links-inicio">|</a>
+          </li>
+          <li>
+            <a href="#faq" class="nav-link px-2 links-inicio">FAQ</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-link px-2 links-inicio">|</a>
+          </li>
+          <li>
+            <a href="/usuario" class="nav-link px-2 links-inicio">Meu Espaço</a>
+          </li>
+        </ul>
+
+        <div class="col-md-2 text-end">
+          <% if (isLoggedIn) { %>
+          <a href="/logout" class="btn btn-outline-secondary me-2 btn-logout"
+            >Logout</a
+          >
+          <% } else { %>
+          <button
+            type="button"
+            class="btn btn-outline-secondary me-2 btn-login"
+          >
+            <a href="/login" class="link-login">Login</a>
+          </button>
+          <button type="button" class="btn btn-secondary btn-cadastro">
+            <a href="/cadastroAnamnese" class="link-cadastro">Cadastro</a>
+          </button>
+          <% } %>
+        </div>
+      </header>
+    </div>
+
+    <!-- Carrossel de imagens -->
+    <div class="container">
+      <div class="overflow-hidden" style="max-height: 100vh">
+        <div class="container">
+          <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active c-item">
+                <img
+                  src="/images/chair.jpg"
+                  class="d-block w-100 c-img"
+                  alt="Slide 1"
+                />
+              </div>
+              <div class="carousel-item c-item">
+                <img
+                  src="/images/dentist.jpg"
+                  class="d-block w-100 c-img"
+                  alt="Slide 2"
+                />
+              </div>
+              <div class="carousel-item c-item">
+                <img
+                  src="/images/reception.jpg"
+                  class="d-block w-100 c-img"
+                  alt="Slide 3"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <!-- login -->
+
+    <div class="b-example-divider"></div>
+    <% if (!isLoggedIn) { %>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
+            Faça o login e acompanhe seu <br />tratamento
+          </h1>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+          <form
+            action="/login"
+            method="POST"
+            class="p-4 p-md-5 border rounded-3 bg-body-tertiary"
+          >
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+                name="email"
+                required
+              />
+              <label for="floatingInput">E-mail</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+                name="password"
+                required
+              />
+              <label for="floatingPassword">Senha</label>
+            </div>
+            <!-- <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" /> Lembrar-me
+              </label>
+            </div> -->
+            <button class="btn btn-outline-secondary me-2">Login</button>
+
+            <button type="button" class="btn btn-secondary btn-cadastro">
+              <a href="/cadastroAnamnese" class="link-cadastro">Cadastro</a>
+            </button>
+            <!-- <hr class="my-4" />
+            <small class="text-body-secondary"
+              >Ao continuar, você concorda com os termos de uso.</small
+            > -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+    <!-- tratamentos -->
+    <div id="tratamentos" class="container">
+      <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Tratamentos</h2>
+            <!-- <p>Confira nossos tratamentos</p> -->
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #e0ddd3 !important">
+              <h4>Tratamento 1</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #f7f5ee !important">
+              <h4>Tratamento 2</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #e0ddd3 !important">
+              <h4>Tratamento 3</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #f7f5ee !important">
+              <h4>Tratamento 4</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #e0ddd3 !important">
+              <h4>Tratamento 5</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="icon-box" style="background-color: #f7f5ee !important">
+              <h4>Tratamento 6</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet eleifend sem non blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in ligula non nisl porttitor interdum. Phasellus porta leo massa, eu facilisis augue mollis quis. In a mattis nisi. Integer in tincidunt ipsum, a facilisis felis. Sed fermentum fermentum erat, eget fermentum dui cursus eget. Quisque in bibendum massa. Praesent pretium neque mauris, ac accumsan leo euismod at.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <!-- sobre nós -->
+    <div id="sobreNos" class="container">
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img
+              src="/images/sobrenos.jpg"
+              class="d-block mx-lg-auto img-fluid"
+              alt="Bootstrap Themes"
+              width="700"
+              height="500"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+              Um pouquinho sobre nós
+            </h1>
+            <p class="lead">
+              <span style="font-weight: 500; font-size: 1.5rem">Profissional 1: </span
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus est, porta in bibendum a, eleifend at tortor. Aliquam iaculis arcu sed ornare tincidunt. Suspendisse dapibus volutpat massa, ut laoreet quam molestie sit amet. Ut vulputate fermentum elit, at pharetra tortor ornare non. Vestibulum at lorem vel massa consectetur lobortis. Integer lectus velit, pretium id sapien id, tristique hendrerit tellus.<br />
+              <span style="font-weight: 500; font-size: 1.5rem">Profissional 2: </span>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus est, porta in bibendum a, eleifend at tortor. Aliquam iaculis arcu sed ornare tincidunt. Suspendisse dapibus volutpat massa, ut laoreet quam molestie sit amet. Ut vulputate fermentum elit, at pharetra tortor ornare non. Vestibulum at lorem vel massa consectetur lobortis. Integer lectus velit, pretium id sapien id, tristique hendrerit tellus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- formas de contato -->
+
+    <div class="container px-4 py-0" id="contatos">
+      <div class="contatos-title">
+        <h2 class="pb-2 pl-4">Contatos</h2>
+      </div>
+      <div class="border-bottom pt-2"></div>
+      <div class="row g-4 py-3">
+        <div class="col-lg-6 d-flex flex-column justify-content-between">
+          <!-- Whatsapp -->
+          <div class="feature mb-2">
+            <div class="d-flex align-items-center mb-1 mt-4">
+              <a
+                class="text-body-secondary me-2"
+                href="https://api.whatsapp.com/"
+                target="_blank"
+              >
+                <img src="/images/whatsapp.png" alt="" height="36" />
+              </a>
+              <h3 class="fs-2 text-body-emphasis mb-0">Marque seu horário!</h3>
+            </div>
+            <p class="mb-4">
+              Clique no ícone do Whatsapp e agende seu horário! <br />
+              Estamos à disposição para tirar qualquer dúvida!
+            </p>
+            <!-- instagram -->
+            <div class="d-flex align-items-center mb-1 mt-2">
+              <a
+                class="text-body-secondary me-2"
+                href="https://www.instagram.com/"
+                target="_blank"
+              >
+                <img src="/images/instagram-icon.png" alt="" height="36" />
+              </a>
+              <h3 class="fs-2 text-body-emphasis mb-0">
+                Nos acompanhe no Instagram!
+              </h3>
+            </div>
+            <p class="mb-4">
+              Fique por dentro das nossas dicas e atualizações!
+            </p>
+            <!-- gmaps -->
+            <div class="d-flex align-items-center mb-1 mt-2">
+              <a
+                class="text-body-secondary me-2"
+                href="https://www.google.com/maps"
+                target="_blank"
+              >
+                <img src="/images/google-maps.png" alt="" height="36" />
+              </a>
+              <h3 class="fs-2 text-body-emphasis mb-0">Venha nos conhecer!</h3>
+            </div>
+            <p class="mb-4">
+              Clique no ícone do Maps e salve nosso endereço! <br />
+              Rua das Ruas, 33 - Centro, Cidade - XX, 12000-000
+            </p>
+          </div>
+        </div>
+        <!-- Segunda coluna: Google Maps -->
+        <div class="col-lg-6 d-flex align-items-center">
+          <div class="feature w-100 text-center">
+            <div class="mt-3">
+              <iframe
+                src="https://maps.app.goo.gl/2d9bE4VS6Bq4E5WMA"
+                width="100%"
+                height="350"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- faq / dúvidas -->
+    <div class="container px-2 pt-3 mt-5" id="faq">
+      <div class="duvidas-title">
+        <h2 class="pb-3">Dúvidas frequentes</h2>
+      </div>
+      <div class="border-bottom pt-2"></div>
+      <div class="row g-4 py-4 row-cols-1 row-cols-lg-3">
+        <div class="feature col">
+          <h3
+            class="fs-2"
+            style="font-size: 1rem; font-weight: 500; margin-bottom: 5%"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lectus in mi cursus auctor.
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis accumsan nisi, eget vulputate mi egestas non. Phasellus sollicitudin orci in ligula dapibus, id ullamcorper ante convallis. Mauris vehicula porttitor dapibus. Donec metus erat, sodales quis rhoncus nec, ultrices at ligula. Suspendisse eu vehicula nunc. Vivamus feugiat velit massa, at venenatis justo hendrerit eu. Donec scelerisque, turpis a facilisis venenatis.
+          </p>
+        </div>
+        <div class="feature col">
+          <h3
+            class="fs-2"
+            style="font-size: 1rem; font-weight: 500; margin-bottom: 5%"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lectus in mi cursus auctor.
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis accumsan nisi, eget vulputate mi egestas non. Phasellus sollicitudin orci in ligula dapibus, id ullamcorper ante convallis. Mauris vehicula porttitor dapibus. Donec metus erat, sodales quis rhoncus nec, ultrices at ligula. Suspendisse eu vehicula nunc. Vivamus feugiat velit massa, at venenatis justo hendrerit eu. Donec scelerisque, turpis a facilisis venenatis.
+          </p>
+        </div>
+        <div class="feature col">
+          <h3
+            class="fs-2"
+            style="font-size: 1rem; font-weight: 500; margin-bottom: 5%"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lectus in mi cursus auctor.
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis accumsan nisi, eget vulputate mi egestas non. Phasellus sollicitudin orci in ligula dapibus, id ullamcorper ante convallis. Mauris vehicula porttitor dapibus. Donec metus erat, sodales quis rhoncus nec, ultrices at ligula. Suspendisse eu vehicula nunc. Vivamus feugiat velit massa, at venenatis justo hendrerit eu. Donec scelerisque, turpis a facilisis venenatis.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <div id="footer">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <div class="col-md-5 d-flex align-items-center">
+          <a
+            href="/home"
+            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1 mx-3"
+          >
+            <img
+              src="/images/logo-removebg.png"
+              alt=""
+              height="100px"
+            />
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary"
+            >© 2025 Clínica Estétik</span
+          >
+        </div>
+
+        <ul class="nav col-md-5 justify-content-end list-unstyled d-flex">
+          <li class="ms-3">
+            <a
+              class="text-body-secondary"
+              href="https://api.whatsapp.com/"
+              target="_blank"
+            >
+              <img src="/images/whatsapp.png" alt="" height="36" />
+            </a>
+          </li>
+          <li class="ms-3">
+            <a
+              class="text-body-secondary"
+              href="https://www.instagram.com/"
+              target="_blank"
+            >
+              <img src="/images/instagram-icon.png" alt="" height="36" />
+            </a>
+          </li>
+          <li class="ms-3 mx-3">
+            <a
+              class="text-body-secondary"
+              href="https://maps.app.goo.gl/2d9bE4VS6Bq4E5WMA"
+              target="_blank"
+            >
+              <img src="/images/google-maps.png" alt="" height="36" />
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              const headerOffset = 100;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

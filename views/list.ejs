@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="calendar.css" />
+  </head>
+
+  <header>
+    <div id="navbar">
+      <nav>
+        <ul>
+          <li>
+            <a href="/home">Home</a>
+          </li>
+          <li>
+            <a href="/">Calendário</a>
+          </li>
+          <li>
+            <a href="/cadastro">Agendar</a>
+          </li>
+          <li>
+            <a href="/list">Consultas</a>
+          </li>
+          <li>
+            <a href="/listaUsuarios">Usuarios</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <body class="bg-light">
+    <div class="container mt-4">
+      <h1 class="text-center mb-4 topicoAgendamentoHorarios">
+        Lista de Agendamentos
+      </h1>
+
+      <form action="/searchresult" method="get" class="text-center mb-5">
+        <div class="input-group w-50 mx-auto">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            class="form-control"
+            placeholder="Pesquisar agendamentos... (Nome ou e-mail)"
+          />
+          <button class="btn btn-success">Pesquisar</button>
+        </div>
+      </form>
+
+      <div class="agendamentos-container">
+        <% appos.sort((a, b) => new Date(a.date) - new
+        Date(b.date)).forEach(appo => { %>
+        <div class="card shadow-sm mb-4 border border-2 custom-border">
+          <div class="card-body">
+            <h2 class="card-title text-secondary">
+              Cliente: <span class="text-dark"><%= appo.name %></span>
+            </h2>
+            <h3 class="text-secondary">
+              Consulta: <span class="text-dark"><%= appo.serviceType %></span>
+            </h3>
+            <% if (appo.description) { %>
+            <h3 class="text-secondary">
+              Observação: <span class="text-dark"><%= appo.description %></span>
+            </h3>
+            <% } %>
+            <h3 class="text-secondary">
+              Dia da consulta:
+              <span class="text-dark">
+                <!-- prettier-ignore -->
+                <%= (() => { 
+                  try { 
+                    let date = new Date(appo.date); 
+                    if (isNaN(date)) throw new Error("Data inválida"); 
+                    date.setHours(date.getHours() + 3); 
+                    let dayOfWeek = date.toLocaleDateString("pt-BR", { weekday: 'long' }); 
+                    let numericDate = date.toLocaleDateString("pt-BR");
+                    return `${numericDate} | ${dayOfWeek}`; 
+                  } catch (error) { 
+                    return "Data inválida"; 
+                  } 
+                })() %>
+              </span>
+            </h3>
+
+            <h3 class="text-secondary">
+              Horário da consulta:
+              <span class="text-dark"><%= appo.time %></span>
+            </h3>
+            <h3 class="text-secondary">
+              E-mail: <span class="text-dark"><%= appo.email %></span>
+            </h3>
+            <% if (appo.phone) { %>
+            <h3 class="text-secondary">
+              Celular: <span class="text-dark"><%= appo.phone %></span>
+            </h3>
+            <% } %>
+            <h3 class="text-secondary">
+              Agendado por:
+              <span class="text-dark"
+                ><%= appo.createdBy || "Desconhecido" %></span
+              >
+            </h3>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

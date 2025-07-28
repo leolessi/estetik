@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendário</title>
+    <link rel="stylesheet" href="calendar.css" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script> -->
+  </head>
+
+  <header>
+    <div id="navbar">
+      <nav>
+        <ul>
+          <li>
+            <a href="/home">Home</a>
+          </li>
+          <li>
+            <a href="/">Calendário</a>
+          </li>
+          <li>
+            <a href="/cadastro">Agendar</a>
+          </li>
+          <li>
+            <a href="/list">Consultas</a>
+          </li>
+          <li>
+            <a href="/listaUsuarios">Usuarios</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <body>
+    <div id="calendar"></div>
+
+    <div class="container mt-3">
+      <div class="goto-date-container">
+        <div class="goto-date-card">
+          <label for="goto-date" class="goto-date-label"> Ir para: </label>
+          <input type="date" id="goto-date" />
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    <script src="calendar.js"></script>
+  </body>
+</html>
+
+<!--  -->
+<!--  -->
+<!-- pesquisar pelo celular -->
+<!-- botão para mudar de tema -->
+<!-- inputs texts do cadastroAnamnese padronizados -->
